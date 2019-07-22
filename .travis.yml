@@ -1,0 +1,25 @@
+
+env:
+   global:
+     - CONAN_USERNAME: rikdev
+     - CONAN_LOGIN_USERNAME: rikdev
+     - CONAN_UPLOAD: https://api.bintray.com/conan/rikdev/conan
+
+linux: &linux
+   os: linux
+   dist: bionic
+   language: python
+   python: 3.7
+   services:
+     - docker
+matrix:
+   include:
+
+      - <<: *linux
+        env: CONAN_GCC_VERSIONS=9 CONAN_DOCKER_IMAGE=conanio/gcc9
+
+install:
+  - ./.travis/install.sh
+
+script:
+  - ./.travis/run.sh
