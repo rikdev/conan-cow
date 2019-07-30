@@ -9,6 +9,7 @@ class CowConan(ConanFile):
     description = "Set of libraries implementing copy-on-write technique"
     topics = ("conan", "header-only", "copy-on-write")
     generators = "cmake"
+    build_requires = "cmake_installer/3.15.1@conan/stable"
 
     def source(self):
         git = tools.Git()
